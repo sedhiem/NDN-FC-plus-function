@@ -29,11 +29,11 @@
 #include "encoding/encoding-buffer.hpp"
 #include "util/time.hpp"
 
-#include <sstream>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/functional/hash.hpp>
 #include <boost/range/adaptor/reversed.hpp>
 #include <boost/range/concepts.hpp>
+#include <sstream>
 
 namespace ndn {
 
@@ -46,8 +46,7 @@ BOOST_CONCEPT_ASSERT((boost::RandomAccessIterator<Function::const_iterator>));
 BOOST_CONCEPT_ASSERT((boost::RandomAccessIterator<Function::reverse_iterator>));
 BOOST_CONCEPT_ASSERT((boost::RandomAccessIterator<Function::const_reverse_iterator>));
 BOOST_CONCEPT_ASSERT((boost::RandomAccessRangeConcept<Function>));
-static_assert(std::is_base_of<tlv::Error, Function::Error>::value,
-              "Function::Error must inherit from tlv::Error");
+static_assert(std::is_base_of<tlv::Error, Function::Error>::value, "Function::Error must inherit from tlv::Error");
 
 const size_t Function::npos = std::numeric_limits<size_t>::max();
 
@@ -247,7 +246,7 @@ Function
 Function::getSuccessor() const
 {
   if (empty()) {
-    static uint8_t firstValue[] {0};
+    static uint8_t firstValue[]{0};
     Function firstFunction;
     firstFunction.append(firstValue, 1);
     return firstFunction;
@@ -337,8 +336,7 @@ namespace std {
 size_t
 hash<ndn::Function>::operator()(const ndn::Function& name) const
 {
-  return boost::hash_range(name.wireEncode().wire(),
-                           name.wireEncode().wire() + name.wireEncode().size());
+  return boost::hash_range(name.wireEncode().wire(), name.wireEncode().wire() + name.wireEncode().size());
 }
 
 } // namespace std

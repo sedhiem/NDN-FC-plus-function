@@ -117,6 +117,7 @@ main(int argc, char* argv[])
   contentConsumer.setContextOption(EraseCache, 1);
   contentConsumer.setContextOption(FINAL_BLOCK_ID, callback.m_finalBlockId);
   std::cout << callback.m_finalBlockId << std::endl;
+  std::cout << "u-consumer process" << std::endl;
   contentConsumer.consume(a2);
 
   return 0;

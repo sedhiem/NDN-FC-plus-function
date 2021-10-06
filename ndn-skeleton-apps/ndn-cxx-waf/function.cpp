@@ -182,17 +182,18 @@ private:
       std::string outputFilename = data.getName().get(-2).toUri(); //"test.png"
       createFile(outputFilename);
 
-      std::cout << outputFilename;
-
+      std::cout << "clientyolo" << std:: endl;
       std::string s = "sudo python3 clientyolo.py " + outputFilename;
+      std::cout << "outputFilename: " << outputFilename << std::endl;
 
-      // system(s.c_str());
+      system(s.c_str());
 
       /**APP GOES HERE**/
 
       std::string loadFilename = data.getName().get(-2).toUri(); //"test.png"
       dataSegmentation(m_filename, outputFilename, executedFunction);
-      // system("sudo rm person.txt");
+      std::string rm = "sudo rm " + outputFilename;
+      system(rm.c_str());
     }
     std::cout << "-------------------------------------------------------" << std::endl;
   }
